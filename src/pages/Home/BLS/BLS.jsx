@@ -29,11 +29,11 @@ export default function BLS() {
         Believerz Learning: Elevate JRF/AIR success with tailored strategic
         preparation.
       </p>
-      <div className="w-11/12 flex mt-20 md:mt-0 BLS-content-div md:flex-col">
+      <div className="w-11/12 flex mt-20 md:mt-0 BLS-content-div md:flex-col-reverse">
         <div className="flex flex-col justify-around pt-20 md:pt-0 custom-width-45 items-end md:w-full md:items-center">
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Homescience Paper 2 Course{" "}
+              Homescience
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
               our platform becomes your comprehensive resource. We offer an
@@ -286,9 +286,14 @@ export default function BLS() {
           </div>{" "}
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-Law            </p>
+              Law{" "}
+            </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
-            For those pursuing JRF in Law, our platform serves as your comprehensive source. Our course spans all legal topics and principles integral to the JRF syllabus. We provide a focused and detailed examination of the subject, ensuring that you are thoroughly prepared for success.
+              For those pursuing JRF in Law, our platform serves as your
+              comprehensive source. Our course spans all legal topics and
+              principles integral to the JRF syllabus. We provide a focused and
+              detailed examination of the subject, ensuring that you are
+              thoroughly prepared for success.
             </p>
             <div className="w-full gap-4 flex md:items-center mt-4 md:mt-0 md:justify-around">
               <button
