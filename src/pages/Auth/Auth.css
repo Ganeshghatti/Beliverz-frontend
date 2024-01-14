@@ -1,0 +1,15 @@
+.auth-input {
+  width: 50px !important;
+  height: 50px !important;
+}
+.otp-4inputdiv div {
+  justify-content: space-between !important;
+}
+.otp-div {
+  width: 400px;
+}
+@media (max-width: 867px) {
+  .otp-div {
+    width: 90%;
+  }
+}

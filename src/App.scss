@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Rubik:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap");
+
+h1 {
+  line-height: 65px !important;
+  font-weight: 700 !important;
+  color: #1f20ae !important;
+  font-size: 3.25rem;
+}
+
+@media (max-width: 867px) {
+  h1 {
+    line-height: 45px !important;
+    font-size: 33px;
+  }
+}
+.custom-width-15 {
+  width: 15%;
+}
+.custom-width-30 {
+  width: 30%;
+}
+.custom-width-45 {
+  width: 45%;
+}
+.custom-width-88 {
+  width: 88%;
+}
+.border-test {
+  border: 2px solid red;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+textarea {
+  resize: none !important;
+}
+
+.button-filled {
+  display: flex;
+  width: 121px;
+  height: 42px;
+  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #5a81ee;
+  color: white;
+}
+.button-outlined {
+  display: inline-flex;
+  width: 121px;
+  height: 42px;
+  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 8.975px;
+  border-radius: 10.77px;
+  border: 0.897px solid #5a81ee;
+  background: #e3eaff;
+  color: #5a81ee;
+}
+
