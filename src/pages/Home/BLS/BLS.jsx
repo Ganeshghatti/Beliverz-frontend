@@ -33,15 +33,14 @@ export default function BLS() {
         <div className="flex flex-col justify-around pt-20 md:pt-0 custom-width-45 items-end md:w-full md:items-center">
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Comprehensive JRF Paper 1 Course
+              Homescience Paper 2 Course{" "}
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
-              Our meticulously crafted Paper 1 complete course aligns seamlessly
-              with your JRF Syllabus. It delves into critical thinking,
-              analytical skills, and comprehensive general knowledge, providing
-              a holistic approach to enhance your awareness. The course
-              integrates simplified techniques for mastering Mathematics and
-              logical reasoning, ensuring a thorough preparation.
+              our platform becomes your comprehensive resource. We offer an
+              all-encompassing course that thoroughly covers your JRF syllabus,
+              addressing crucial topics such as Food and Nutrition, Clothing and
+              Textiles, and Child Development. Our commitment is to equip you
+              with the knowledge and skills necessary to excel in this domain.
             </p>
             <div className="w-full gap-4 flex md:items-center mt-4 md:mt-0 md:justify-around">
               <button
@@ -96,15 +95,14 @@ export default function BLS() {
           </div>
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Comprehensive JRF Paper 1 Course
+              Management{" "}
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
-              Our meticulously crafted Paper 1 complete course aligns seamlessly
-              with your JRF Syllabus. It delves into critical thinking,
-              analytical skills, and comprehensive general knowledge, providing
-              a holistic approach to enhance your awareness. The course
-              integrates simplified techniques for mastering Mathematics and
-              logical reasoning, ensuring a thorough preparation.
+              In the realm of Management, our platform is your guide to
+              mastering the JRF syllabus. Our comprehensive course covers
+              Entrepreneurship, Marketing, and other vital topics. We are
+              committed to offering the knowledge and insights that will empower
+              you to excel in this specialized field.
             </p>
             <div className="w-full gap-4 flex md:items-center mt-4 md:mt-0 md:justify-around">
               <button
@@ -225,15 +223,15 @@ export default function BLS() {
           </div>{" "}
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Comprehensive JRF Paper 1 Course
+              Economics{" "}
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
-              Our meticulously crafted Paper 1 complete course aligns seamlessly
-              with your JRF Syllabus. It delves into critical thinking,
-              analytical skills, and comprehensive general knowledge, providing
-              a holistic approach to enhance your awareness. The course
-              integrates simplified techniques for mastering Mathematics and
-              logical reasoning, ensuring a thorough preparation.
+              Navigating the complexities of economics in preparation for your
+              JRF is made seamless through our dedicated platform. Our
+              comprehensive course covers microeconomics, macroeconomics,
+              international economics, public economics, development economics
+              etc. we provide the resources and support you need to confidently
+              tackle every facet of the economics syllabus.
             </p>
             <div className="w-full gap-4 flex md:items-center mt-4 md:mt-0 md:justify-around">
               <button
@@ -288,15 +286,9 @@ export default function BLS() {
           </div>{" "}
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Comprehensive JRF Paper 1 Course
-            </p>
+Law            </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
-              Our meticulously crafted Paper 1 complete course aligns seamlessly
-              with your JRF Syllabus. It delves into critical thinking,
-              analytical skills, and comprehensive general knowledge, providing
-              a holistic approach to enhance your awareness. The course
-              integrates simplified techniques for mastering Mathematics and
-              logical reasoning, ensuring a thorough preparation.
+            For those pursuing JRF in Law, our platform serves as your comprehensive source. Our course spans all legal topics and principles integral to the JRF syllabus. We provide a focused and detailed examination of the subject, ensuring that you are thoroughly prepared for success.
             </p>
             <div className="w-full gap-4 flex md:items-center mt-4 md:mt-0 md:justify-around">
               <button

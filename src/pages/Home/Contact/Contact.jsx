@@ -70,8 +70,8 @@ export default function Contact() {
     >
       {loading && <Spinnerf />}
       <Stack spacing={2}>{alert}</Stack>
-      <div className="custom-width-88 flex md:flex-col">
-        <div className="flex w-1/2 md:w-full flex-col justify-between">
+      <div className="custom-width-88 flex md:flex-col md:w-11/12 md:gap-8">
+        <div className="flex w-1/2 md:w-full flex-col justify-between md:items-center">
           <div className="flex flex-col gap-4">
             <p
               className="text-5xl md:text-4xl font-medium text-black2 md:text-center"
@@ -84,7 +84,7 @@ export default function Contact() {
             </p>
           </div>
           <div className="w-full flex flex-wrap justify-around items-center gap-y-24">
-            <div className="w-1/2 flex flex-col gap-2">
+            <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
                 style={{
                   display: "flex",
@@ -117,9 +117,9 @@ export default function Contact() {
               </div>
 
               <p className="text-xl md:text-lg font-medium">Email</p>
-              <a href="mailto:contact@beliverz.com">contact@beliverz.com</a>
+              <a href="mailto:contact@beliverz.com" className="text-base md:text-sm">contact@beliverz.com</a>
             </div>
-            <div className="w-1/2 flex flex-col gap-2">
+            <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
                 style={{
                   display: "flex",
@@ -150,9 +150,9 @@ export default function Contact() {
                 </div>
               </div>
               <p className="text-xl md:text-lg font-medium">Phone</p>
-              <a href="tel:+91 999999999">+91 999999999</a>
+              <a href="tel:+91 999999999" className="text-base md:text-sm">+91 999999999</a>
             </div>
-            <div className="w-1/2 flex flex-col gap-2">
+            <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
                 style={{
                   display: "flex",
@@ -183,9 +183,9 @@ export default function Contact() {
                 </div>
               </div>
               <p className="text-xl md:text-lg font-medium">Office</p>
-              <a href="mailto:contact@beliverz.com">contact@beliverz.com</a>
+              <a href="mailto:contact@beliverz.com" className="text-base md:text-sm">contact@beliverz.com</a>
             </div>
-            <div className="w-1/2 flex flex-col gap-2">
+            <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
                 style={{
                   display: "flex",
@@ -235,7 +235,7 @@ export default function Contact() {
         </div>
         <form
           onSubmit={handleSubmit}
-          className="custom-width-45 md:w-full flex flex-col gap-6 px-14 py-20"
+          className="custom-width-45 md:w-full flex flex-col gap-6 px-14 py-20 md:px-4 md:py-10"
           style={{ border: "1px solid #5A81EE", borderRadius: "25px" }}
         >
           <div className="flex md:flex-col justify-between items-center">
