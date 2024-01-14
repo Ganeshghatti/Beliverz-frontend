@@ -34,7 +34,7 @@ export default function Contact() {
 
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:5000/user/form", formData);
+      const response = await axios.post("https://beliverz-user-server.vercel.app/user/form", formData);
       console.log(response);
       setAlert(
         <Alert

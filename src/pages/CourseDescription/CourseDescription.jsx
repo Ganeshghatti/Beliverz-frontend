@@ -26,7 +26,7 @@ export default function CourseDescription() {
           setLoading(true);
           console.log(courseId);
           const response = await axios.get(
-            `http://localhost:5000/user/courses/${courseId}`
+            `https://beliverz-user-server.vercel.app/user/courses/${courseId}`
           );
           console.log(response)
           setFormData(response.data.course);
