@@ -73,7 +73,7 @@ export default function Courses() {
       </div>{" "}
       <Slider {...sliderSettings} className="mt-12 relative w-11/12">
         {courses.map((item, index) => (
-          <Link to={item.courseId} key={item.courseId}>
+          <Link to={`/courses/${item.courseId}`} key={item.courseId}>
             <Card className="cursor-pointer relative home-courses-card mr-8">
               <CardMedia
                 component="img"
@@ -111,84 +111,6 @@ export default function Courses() {
             </Card>
           </Link>
         ))}{" "}
-        {courses.map((item, index) => (
-          <Link to={item.courseroute} key={item.courseId}>
-            <Card className="cursor-pointer relative home-courses-card mr-8">
-              <CardMedia
-                component="img"
-                height="140"
-                image={item.coursethumbnail || imgplaceholder}
-                style={{ objectFit: "contain" }}
-              />
-              <Chip
-                label={item.coursepayment}
-                variant={item.coursepayment === "free" ? "outlined" : "filled"}
-                style={{
-                  backgroundColor:
-                    item.coursepayment === "free" ? "transparent" : "#FF9D03",
-                  color: item.coursepayment === "free" ? "black" : "white",
-                }}
-                className="absolute top-3 right-3 z-50"
-              />
-              <div className="p-6 flex flex-col">
-                <Rating
-                  value={item.courserating}
-                  precision={0.25}
-                  emptyIcon={<StarBorderIcon fontSize="inherit" />}
-                  readOnly
-                />
-                <p className="font-semibold text-2xl md:text-xl">
-                  {item.courseName}
-                </p>
-                <p className="text-xl md:text-lg font-bold">
-                  <span className="text-2xl font-bold">
-                    {item.coursetotalEnrollments}
-                  </span>
-                  enrollments
-                </p>
-              </div>
-            </Card>
-          </Link>
-        ))}{" "}
-        {courses.map((item, index) => (
-          <Link to={item.courseroute} key={item.courseId}>
-            <Card className="cursor-pointer relative home-courses-card mr-8">
-              <CardMedia
-                component="img"
-                height="140"
-                image={item.coursethumbnail || imgplaceholder}
-                style={{ objectFit: "contain" }}
-              />
-              <Chip
-                label={item.coursepayment}
-                variant={item.coursepayment === "free" ? "outlined" : "filled"}
-                style={{
-                  backgroundColor:
-                    item.coursepayment === "free" ? "transparent" : "#FF9D03",
-                  color: item.coursepayment === "free" ? "black" : "white",
-                }}
-                className="absolute top-3 right-3 z-50"
-              />
-              <div className="p-6 flex flex-col">
-                <Rating
-                  value={item.courserating}
-                  precision={0.25}
-                  emptyIcon={<StarBorderIcon fontSize="inherit" />}
-                  readOnly
-                />
-                <p className="font-semibold text-2xl md:text-xl">
-                  {item.courseName}
-                </p>
-                <p className="text-xl md:text-lg font-bold">
-                  <span className="text-2xl font-bold">
-                    {item.coursetotalEnrollments}
-                  </span>
-                  enrollments
-                </p>
-              </div>
-            </Card>
-          </Link>
-        ))}
       </Slider>
     </section>
   ) : (
