@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Hero() {
+  const user = useSelector((state) => state.user.user);
+
   return (
     <section
       id="hero"
@@ -19,9 +22,14 @@ export default function Hero() {
           Nurture Your Professional Aspirations with Us. Conquer JRF, Achieve
           Your Dreams!
         </p>
-        <Link to="/login" className="w-fit">
-          <button className="button-filled w-40 h-14 md:w-36 md:h-12">Join For Free</button>
-        </Link>
+        {!user.email && (
+          <Link to="/login" className="w-fit">
+            <button className="button-filled w-40 h-14 md:w-36 md:h-12">
+              Join For Free
+            </button>
+          </Link>
+        )}
+
         <div className="flex flex-col mt-4">
           <div className="flex">
             <p className="text-5xl md:text-4xl text-black2 font-semibold">

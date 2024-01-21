@@ -104,7 +104,7 @@ const Login = () => {
       <div className="flex flex-col justify-center items-center w-1/2 md:w-full">
         <form
           onSubmit={handleSubmit}
-          className="rounded md:w-full w-11/12 flex flex-col gap-5 px-14 justify-center bg-white"
+          className="rounded md:w-full w-11/12 flex flex-col gap-5 px-14 justify-center bg-white md:py-12 md:px-6"
         >
           <p className="text-navyblue text-3xl font-semibold">Log in </p>
 
@@ -154,7 +154,7 @@ const Login = () => {
             Login
           </button>
           <p className="self-center text-center text-bluepurple font-light text-base md:text-sm">
-            Don't have an Account ?<br className="hidden md:block" />
+            Don't have an Account ?
             <Link to="/signup" className=" text-navyblue font-bold text-base">
               Create Account
             </Link>

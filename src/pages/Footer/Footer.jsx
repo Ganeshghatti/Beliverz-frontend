@@ -17,11 +17,11 @@ export default function Footer() {
   const { courseId, email, chapterId, contentId } = useParams();
 
   const footerdisplay =
-    location.pathname === "/" ||
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname ===
       `/courses/${courseId}/${email}/${chapterId}/${contentId}`;
+
   const courses = useSelector((state) => state.courses.courses);
 
   useEffect(() => {
@@ -36,6 +36,8 @@ export default function Footer() {
   }, [location]);
 
   return footerdisplay ? (
+""
+  ) : (
     <footer
       id="footer"
       className="flex md:flex-col justify-between py-12 md:gap-16 bg-blue "
@@ -91,8 +93,5 @@ export default function Footer() {
           <Link to="/terms-and-conditions">Terms and Conditions</Link>
         </li>
       </ul>
-    </footer>
-  ) : (
-    ""
-  );
+    </footer>  );
 }

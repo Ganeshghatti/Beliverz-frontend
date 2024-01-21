@@ -35,10 +35,8 @@ export default function App() {
       );
     }
   }, []);
-  useEffect(() => {
-    fetchAndDispatchCategories();
-    fetchAndDispatchCoursenames();
-  }, []);
+  fetchAndDispatchCategories();
+  fetchAndDispatchCoursenames();
 
   return (
     <>
