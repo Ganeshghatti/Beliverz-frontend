@@ -5,7 +5,6 @@ const initialState = {
     email: "",
     token: "",
     username:"",
-    isAdmin:false,
   },
 };
 

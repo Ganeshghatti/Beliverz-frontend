@@ -1,0 +1,9 @@
+@media (max-width: 867px) {
+    #login {
+      background-image: url("../../../public/Assets/Images/Auth/loginbgphone.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  

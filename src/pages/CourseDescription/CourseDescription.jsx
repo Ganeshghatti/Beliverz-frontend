@@ -15,6 +15,16 @@ import Spinnerf from "../../Components/Spinnerf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import LinearProgress from "@mui/joy/LinearProgress";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@mui/material";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Avatar from "@mui/joy/Avatar";
+import AccordionGroup from "@mui/joy/AccordionGroup";
 
 const videoStyle = {
   width: "100%",
@@ -27,9 +37,18 @@ const fullscreenvideoStyle = {
 export default function CourseDescription() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [instructorloading, setinstructorLoading] = useState(false);
   const [alert, setAlert] = useState(null);
   const [fullscreenvideo, setfullscreenvideo] = useState(false);
+  const [expandedPanel, setExpandedPanel] = useState(null);
+  const [instructors, setinstructors] = useState();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
   const { courseId } = useParams();
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpandedPanel(isExpanded ? panel : null);
+  };
 
   const fullscreenvideof = () => {
     setfullscreenvideo(!fullscreenvideo);
@@ -44,7 +63,6 @@ export default function CourseDescription() {
           const response = await axios.get(
             `https://beliverz-user-server.vercel.app/user/courses/${courseId}`
           );
-          console.log(response.data.course);
           setFormData(response.data.course);
           setLoading(false);
         }
@@ -66,13 +84,84 @@ export default function CourseDescription() {
     fetchData();
   }, [courseId]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (courseId) {
+          setinstructorLoading(true);
+          console.log(courseId);
+          const response = await axios.get(
+            `https://beliverz-user-server.vercel.app/user/courses/${courseId}/instructors`
+          );
+          console.log(response.data.instructors);
+          setinstructors(response.data.instructors);
+          setinstructorLoading(false);
+        }
+      } catch (error) {
+        setAlert(
+          <Alert
+            style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
+            variant="filled"
+            severity="error"
+          >
+            {error.response}
+          </Alert>
+        );
+        setTimeout(() => setAlert(null), 5000);
+        setinstructorLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [courseId]);
+
+  const enrollNowf = async () => {
+    if (!user.email) {
+      navigate("/login");
+      return;
+    }
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `https://beliverz-user-server.vercel.app/user/courses/${courseId}/course-enroll`,
+        { email: user.email, courseId },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      localStorage.setItem(
+        `${response.data.courseId}`,
+        JSON.stringify({
+          courseId: response.data.courseId,
+          chapterId: response.data.chapterId,
+          contentId: response.data.contentId,
+        })
+      );
+      setLoading(false);
+
+      navigate(
+        `/courses/${response.data.courseId}/${user.email}/${response.data.chapterId}/${response.data.contentId}`
+      );
+    } catch (error) {
+      setLoading(false);
+      setAlert(
+        <Alert
+          style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
+          variant="filled"
+          severity="error"
+        >
+          {error.response.data.error}
+        </Alert>
+      );
+      setTimeout(() => setAlert(null), 5000);
+    }
+  };
   const scrollToSection = (section) => {
     const targetSection = document.getElementById(section);
     if (targetSection) {
-      // Scroll to the specified section
       targetSection.scrollIntoView({ behavior: "smooth" });
-
-      // Update the URL with only the section ID in the fragment
       window.location.hash = section;
     }
   };
@@ -87,7 +176,6 @@ export default function CourseDescription() {
       <Stack spacing={2}>{alert}</Stack>
       {formData.introVideo && (
         <>
-          {" "}
           {fullscreenvideo && (
             <div
               className="fixed w-screen h-screen bg-black bg-opacity-60 flex items-center justify-center z-50"
@@ -153,7 +241,10 @@ export default function CourseDescription() {
               )}
 
               <div className="flex gap-3.5 w-3/5 md:w-full justify-between my-4">
-                <button className="custom-width-45 bg-[#5A81EE] py-3 md:py-2 rounded-xl text-white text-lg font-semibold">
+                <button
+                  className="custom-width-45 bg-[#5A81EE] py-3 md:py-2 rounded-xl text-white text-lg font-semibold"
+                  onClick={enrollNowf}
+                >
                   Enroll Now!
                 </button>
                 {formData.introVideo && (
@@ -294,10 +385,78 @@ export default function CourseDescription() {
               )}
             </div>
           </section>
-          <div
-            id="course-instructors"
-            className="bg-black w-screen h-screen"
-          ></div>
+          <section className="flex md:flex-col justify-between custom-width-88 md:w-11/12 mx-auto py-12 items-center">
+            <div className="flex flex-col w-2/3  md:w-full">
+              <AccordionGroup>
+                {formData.chapters && (
+                  <>
+                    {formData.chapters.map((chapter, index) => (
+                      <Accordion
+                        expanded={expandedPanel === `panel${index}-`}
+                        onChange={handleChange(`panel${index}-`)}
+                        className="p-4"
+                      >
+                        <AccordionSummary
+                          expandIcon={
+                            expandedPanel === `panel${index}-` ? (
+                              <KeyboardArrowUpIcon />
+                            ) : (
+                              <KeyboardArrowUpIcon />
+                            )
+                          }
+                          aria-controls={`panel${index}-a-content`}
+                          id={`panel${index}-a-header`}
+                        >
+                          <p
+                            className={` text-2xl md:text-xl font-semibold ${
+                              expandedPanel === `panel${index}-`
+                                ? "text-blue"
+                                : "text-black"
+                            }`}
+                          >
+                            {chapter.chapterName}
+                          </p>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <p className="text-gray2 text-xl md:text-lg">
+                            Our Investment Banking consultants provide advisory
+                            services addressing the need for better Financial
+                            Management. We also assist in Mergers and
+                            acquisitions (M&A) advice, divestitures, and
+                            assistance for strategic partnerships are key areas
+                            of focus.
+                          </p>
+                        </AccordionDetails>
+                      </Accordion>
+                    ))}
+                  </>
+                )}
+              </AccordionGroup>
+            </div>
+            {instructorloading ? (
+              <Spinnerf />
+            ) : (
+              <div
+                id="course-instructors"
+                style={{ border: "1px solid #5a81ee" }}
+                className="w-1/4 flex p-12 flex-col gap-12 md:w-full justify-center rounded-xl"
+              >
+                <p className="text-black1 text-2xl md:text-xl font-semibold">
+                  Instructors
+                </p>
+                <div className="flex flex-col gap-4 w-full">
+                  {instructors.map((item, index) => (
+                    <div className="w-full flex justify-left gap-4 items-center mx-auto ">
+                      <Avatar src={item.photo && item.photo} />
+                      <p className="text-black2 font-medium text-lg md:text-base underline">
+                        {item.instructorName}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
         </>
       )}
     </div>

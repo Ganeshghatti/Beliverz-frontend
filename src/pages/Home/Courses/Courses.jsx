@@ -79,7 +79,7 @@ export default function Courses() {
                 component="img"
                 height="140"
                 image={item.coursethumbnail || imgplaceholder}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
               <Chip
                 label={item.coursepayment}

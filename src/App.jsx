@@ -16,6 +16,8 @@ import { saveuser } from "./features/User";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TermsandConditions from "./Components/TermsandConditions";
 import CourseDescription from "./pages/CourseDescription/CourseDescription";
+import CoursePage from "./pages/CoursePage/CoursePage";
+import Account from "./pages/Account/Account";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -27,14 +29,15 @@ export default function App() {
       dispatch(
         saveuser({
           email: storedUserData.email,
-          token: storedUserData.accessToken,
+          token: storedUserData.token,
+          username:storedUserData.username
         })
       );
     }
   }, []);
 
-  fetchAndDispatchCategories();
-  fetchAndDispatchCoursenames();
+  // fetchAndDispatchCategories();
+  // fetchAndDispatchCoursenames();
   return (
     <>
       <BrowserRouter>
@@ -44,7 +47,9 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/instructors" element={<Instructors />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/courses/:courseId" element={<CourseDescription />} />
+          <Route path="/courses/:courseId/:email/:chapterId/:contentId" element={<CoursePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsandConditions />} />
         </Routes>

@@ -21,11 +21,13 @@ import { MenuButton as BaseMenuButton } from "@mui/base/MenuButton";
 import { MenuItem as BaseMenuItem, menuItemClasses } from "@mui/base/MenuItem";
 import Spinnerf from "../../Components/Spinnerf";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { useParams } from "react-router-dom";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const { courseId, email, chapterId, contentId } = useParams();
 
   const [menu, setmenu] = useState(false);
   const user = useSelector((state) => state.user.user);
@@ -37,11 +39,11 @@ export default function Navbar() {
     localStorage.clear();
     window.location.href = "/";
   };
-
-  const isSignupOrLogin =
-    location.pathname === "/signup" ||
+  const navbardisplay =
     location.pathname === "/login" ||
-    location.pathname === "/auth";
+    location.pathname === "/signup" ||
+    location.pathname ===
+      `/courses/${courseId}/${email}/${chapterId}/${contentId}`;
 
   const menuf = () => {
     setmenu(!menu);
@@ -59,8 +61,8 @@ export default function Navbar() {
     setmenu(!menu);
   };
 
-  return isSignupOrLogin ? (
-    ""
+  return navbardisplay ? (
+""
   ) : (
     <nav
       id="navbar"
@@ -289,6 +291,5 @@ export default function Navbar() {
           />
         )}
       </div>
-    </nav>
-  );
+    </nav>  );
 }

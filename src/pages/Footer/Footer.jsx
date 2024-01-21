@@ -10,13 +10,18 @@ import MailIcon from "@mui/icons-material/Mail";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import logo from "./logo.png";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function Footer() {
   const location = useLocation();
-  const isSignupOrLogin =
-    location.pathname === "/signup" ||
+  const { courseId, email, chapterId, contentId } = useParams();
+
+  const footerdisplay =
+    location.pathname === "/" ||
     location.pathname === "/login" ||
-    location.pathname === "/auth";
+    location.pathname === "/signup" ||
+    location.pathname ===
+      `/courses/${courseId}/${email}/${chapterId}/${contentId}`;
   const courses = useSelector((state) => state.courses.courses);
 
   useEffect(() => {
@@ -30,9 +35,7 @@ export default function Footer() {
     }
   }, [location]);
 
-  return isSignupOrLogin ? (
-    ""
-  ) : (
+  return footerdisplay ? (
     <footer
       id="footer"
       className="flex md:flex-col justify-between py-12 md:gap-16 bg-blue "
@@ -89,5 +92,7 @@ export default function Footer() {
         </li>
       </ul>
     </footer>
+  ) : (
+    ""
   );
 }

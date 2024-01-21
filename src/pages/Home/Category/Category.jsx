@@ -19,7 +19,7 @@ export default function Category() {
         <p className="text-lg text-black3 md:text-base md:text-center">
           Various versions have evolved over the years, sometimes by accident,
         </p>
-        <div className="flex flex-wrap md:flex-col w-full mt-12 justify-between gap-y-32 lg:gap-y-16 md:gap-y-8 md:items-center md:w-11/12">
+        <div className="flex flex-wrap md:flex-col w-full mt-12 justify-between gap-y-32 lg:gap-y-16 md:gap-y-8 md:items-center md:w-full">
           {category.map((item, index) => (
             <div className="home-category-card md:w-full relative">
               <div className="home-category-card-gradient absolute w-full h-full" />
