@@ -153,7 +153,7 @@ export default function Navbar() {
                 </Link>
               </div>
             ) : (
-              <div className="fmd:lex flex-col gap-12 hidden items-center mt-10">
+              <div className="md:flex flex-col gap-12 hidden items-center mt-10">
                 <div className="flex flex-col items-center">
                   <Link
                     to="/account"
