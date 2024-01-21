@@ -100,7 +100,7 @@ export default function Courses() {
           In-demand Learning: Top-rated courses for skill mastery.
         </p>
       </div>
-      <Slider {...settings} className="mt-12 relative w-11/12 overflow-hidden">
+      <Slider {...settings} className="mt-12 relative w-11/12 overflow-hidden md:w-full">
         {courses.map((item, index) => (
           <Link to={`/courses/${item.courseId}`} key={item.courseId}>
             <div className="cursor-pointer relative home-courses-card gap-1 rounded-xl flex flex-col items-center">
@@ -114,7 +114,6 @@ export default function Courses() {
                     item.coursepayment
                   ) : (
                     <p className="text-sm p-1 flex justify-center items-center">
-                      {" "}
                       <CurrencyRupeeIcon style={{ fontSize: "16px" }} />
                       {item.courseamountInINR}
                     </p>
@@ -126,7 +125,7 @@ export default function Courses() {
                   color: "white",
                 }}
                 className="absolute top-3 right-3 z-50"
-              />{" "}
+              />
               <div className="w-11/12 flex justify-between">
                 <p className="text-sm font-normal text-black1">
                   {item.courselanguage}
