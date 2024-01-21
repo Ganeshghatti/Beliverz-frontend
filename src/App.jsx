@@ -30,14 +30,16 @@ export default function App() {
         saveuser({
           email: storedUserData.email,
           token: storedUserData.token,
-          username:storedUserData.username
+          username: storedUserData.username,
         })
       );
     }
   }, []);
+  useEffect(() => {
+    fetchAndDispatchCategories();
+    fetchAndDispatchCoursenames();
+  }, []);
 
-  fetchAndDispatchCategories();
-  fetchAndDispatchCoursenames();
   return (
     <>
       <BrowserRouter>
@@ -49,9 +51,15 @@ export default function App() {
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/account" element={<Account />} />
           <Route path="/courses/:courseId" element={<CourseDescription />} />
-          <Route path="/courses/:courseId/:email/:chapterId/:contentId" element={<CoursePage />} />
+          <Route
+            path="/courses/:courseId/:email/:chapterId/:contentId"
+            element={<CoursePage />}
+          />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsandConditions />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsandConditions />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

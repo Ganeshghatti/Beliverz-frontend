@@ -62,11 +62,11 @@ export default function Navbar() {
   };
 
   return navbardisplay ? (
-""
+    ""
   ) : (
     <nav
       id="navbar"
-      className="absolute w-screen flex justify-around items-center py-12 z-50 md:justify-between md:px-8"
+      className="absolute w-screen flex justify-around items-center py-12 z-50 md:justify-between md:overflow-x-hidden md:px-8 left-0 top-0"
     >
       {menu ? (
         <div className="hidden md:block">
@@ -109,6 +109,16 @@ export default function Navbar() {
               </li>
               <li onClick={menuf}>
                 <Link
+                  to="/#category"
+                  className={`${
+                    isActiveTab("/") ? "text-black2" : "text-blue"
+                  } hover:text-blue`}
+                >
+                  Categories
+                </Link>
+              </li>{" "}
+              {/* <li onClick={menuf}>
+                <Link
                   to="/instructors"
                   className={`${
                     isActiveTab("/") ? "text-black2" : "text-blue"
@@ -116,7 +126,7 @@ export default function Navbar() {
                 >
                   Instructors
                 </Link>
-              </li>{" "}
+              </li>{" "} */}
               <li onClick={menuf}>
                 <Link
                   to="/#testimonials"
@@ -224,8 +234,19 @@ export default function Navbar() {
             )}
           </div>
         </li>
-
-        <li>
+<li>
+          <Link
+            to="/#category"
+            className={`${
+              isActiveTab("/category")
+                ? "text-blue font-semibold"
+                : "text-black1"
+            } hover:text-blue`}
+          >
+            Categories
+          </Link>
+        </li>
+        {/* <li>
           <Link
             to="/instructors"
             className={`${
@@ -236,7 +257,7 @@ export default function Navbar() {
           >
             Instructors
           </Link>
-        </li>
+        </li> */}
 
         <li>
           <Link to="/#testimonials" className="hover:text-blue text-black1">
@@ -291,5 +312,6 @@ export default function Navbar() {
           />
         )}
       </div>
-    </nav>  );
+    </nav>
+  );
 }

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
-import imgplaceholder from "./imgplaceholder.jpg";
+import imgplaceholder from "./imgplaceholder.png";
 import { Link } from "react-router-dom";
 import Spinnerf from "../../Components/Spinnerf";
 import Alert from "@mui/material/Alert";
@@ -23,9 +23,8 @@ export default function Account() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (user.token !== null) {
+        if (user.email !== null) {
           setLoading(true);
-          console.log(user.email);
           const response = await axios.get(
             `https://beliverz-user-server.vercel.app/user/account/${user.email}`,
             {
@@ -39,7 +38,6 @@ export default function Account() {
           setLoading(false);
         }
       } catch (error) {
-        console.log(error);
         setAlert(
           <Alert
             style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
@@ -67,35 +65,30 @@ export default function Account() {
           </p>
         </div>
       )}{" "}
-      <div className="flex flex-col justify-center w-full">
-        <div className="w-3/5 flex flex-col gap-6 md:w-11/12">
-          <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg text-center py-16 ">
+      <div className="flex flex-col justify-center w-full items-center py-16">
+        <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
+          <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
             Courses
           </p>
-          <div className="flex gap-4 md:flex-col flex-wrap">
+          <div className="flex gap-8 md:flex-col flex-wrap">
             {enrolledcourses && enrolledcourses.length > 0 ? (
               <>
                 {enrolledcourses.map((item, index) => (
-                  <Card className="cursor-pointer relative home-courses-card mr-8">
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={item.coursethumbnail || imgplaceholder}
-                      style={{ objectFit: "cover" }}
-                    />
-
-                    <div className="p-6 flex flex-col">
-                      <Rating
-                        value={item.courserating}
-                        precision={0.25}
-                        emptyIcon={<StarBorderIcon fontSize="inherit" />}
-                        readOnly
+                  <Link
+                    to={`/courses/${item.currentlywatching.courseId}/${user.email}/${item.currentlywatching.chapterId}/${item.currentlywatching.contentId}`}
+                    key={item.courseId}
+                  >
+                    <div className="cursor-pointer relative account-courses-card gap-1 rounded-xl flex flex-col items-center">
+                      <img
+                        src={item.thumbnail || imgplaceholder}
+                        className="h-72 w-full object-cover rounded-xl"
                       />
-                      <p className="font-semibold text-2xl md:text-xl">
+
+                      <p className="w-11/12 font-medium text-black1 text-xl py-4">
                         {item.courseName}
                       </p>
                     </div>
-                  </Card>
+                  </Link>
                 ))}
               </>
             ) : (

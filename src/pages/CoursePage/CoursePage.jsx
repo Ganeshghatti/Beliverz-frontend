@@ -31,6 +31,10 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+
 const defaultTheme = createTheme();
 
 const drawerWidth = 325;
@@ -121,7 +125,7 @@ export default function CoursePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (user.token !== null) {
+        if (user.token != null) {
           setLoading(true);
           console.log(user.token);
           const response = await axios.get(
@@ -216,24 +220,32 @@ export default function CoursePage() {
                           aria-controls={`panel${index}-a-content`}
                           id={`panel${index}-a-header`}
                         >
-                          <p
-                            className={` text-2xl md:text-xl font-semibold ${
-                              expandedPanel === `panel${index}-`
-                                ? "text-blue"
-                                : "text-black"
-                            }`}
-                          >
+                          <p className="text-2xl md:text-xl font-medium">
                             {index + 1} . {item.chapterName}
                           </p>
                         </AccordionSummary>
                         <AccordionDetails>
                           {item.content.map((content, contentindex) => (
-                            <div
+                            <p
+                              className={`px-6 flex items-center gap-4 text-lg md:text-base underline font-medium text-black1 mb-6 mt-2 hover:text-blue cursor-pointer ${
+                                content.contentId == contentId
+                                  ? "text-blue"
+                                  : ""
+                              }`}
                               key={contentindex}
                               onClick={(e) => ChangeContent(content, item)}
                             >
-                              {content.contentName}
-                            </div>
+                              {content.type === "Video" ? (
+                                <>
+                                  <OndemandVideoIcon /> {content.contentName}
+                                </>
+                              ) : content.type === "Pdf" ? (
+                                <>
+                                  <PictureAsPdfIcon />
+                                  {content.contentName}
+                                </>
+                              ) : null}
+                            </p>
                           ))}
                         </AccordionDetails>
                       </Accordion>
@@ -247,7 +259,7 @@ export default function CoursePage() {
           </Drawer>
         </Box>
       </ThemeProvider>
-      <div className="flex flex-wrap md:flex-col justify-between gap-8 flex-1 h-screen md:items-center">
+      <div className="flex flex-wrap md:flex-col justify-between gap-8 flex-1 h-screen md:items-center CoursePage-content-div">
         {contentondisplay && contentondisplay.contentName ? (
           <>
             {contentondisplay.type === "Video" ? (
@@ -255,7 +267,7 @@ export default function CoursePage() {
                 <video
                   style={{
                     width: "100%",
-                    height: "100%",
+                    height: "auto",
                     objectFit: "contain",
                   }}
                   controls

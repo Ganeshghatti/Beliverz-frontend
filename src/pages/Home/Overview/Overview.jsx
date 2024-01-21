@@ -85,7 +85,7 @@ export default function Overview() {
           </p>
         </div>{" "}
         <img
-          src="./assets/Images/Home/overview4.png"
+          src="./assets/Images/Home/overview1.png"
           className="w-2/5 md:w-full object-cover rounded-xl"
         />
       </div>

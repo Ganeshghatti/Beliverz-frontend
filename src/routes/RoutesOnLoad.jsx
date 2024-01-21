@@ -19,24 +19,12 @@ export const fetchAndDispatchCategories = async () => {
 export const fetchAndDispatchCoursenames = async () => {
   const dispatch = useDispatch();
   try {
-    const lastModified = localStorage.getItem("lastModified");
-
-    const headers = {};
-
-    if (lastModified) {
-      headers["If-Modified-Since"] = lastModified;
-    }
-
     const response = await axios.get(
-      "https://beliverz-user-server.vercel.app/user/get-all-coursenames",
-      { headers }
+      "https://beliverz-user-server.vercel.app/user/get-all-coursenames"
     );
 
-    if (response.status === 200) {
-      const latestUpdatedAt = moment(response.headers["last-modified"]);
-      localStorage.setItem("lastModified", latestUpdatedAt.toISOString());
-      dispatch(allcourses(response.data.courses));
-    }
+    localStorage.setItem("courses", response.data.courses);
+    dispatch(allcourses(response.data.courses));
   } catch (error) {
     console.log(error);
   }

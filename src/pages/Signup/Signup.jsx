@@ -80,7 +80,7 @@ const Signup = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/user/register",
+        "https://beliverz-user-server.vercel.app/user/register",
         formData
       );
       console.log(response);

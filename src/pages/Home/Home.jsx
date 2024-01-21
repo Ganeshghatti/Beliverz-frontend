@@ -14,9 +14,9 @@ export default function Home() {
     <div className="flex flex-col items-center w-full">
       <Hero />
       <Numbers />
-      <Category />
-      <Overview />
       <Courses />
+      <Overview />
+      <Category />
       <WhyUs />
       <BLS />
       <Contact />
