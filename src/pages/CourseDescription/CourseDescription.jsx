@@ -28,7 +28,7 @@ import AccordionGroup from "@mui/joy/AccordionGroup";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import instructorsimg from "./instructors.png";
+import instructorsimg from "./Instructors.png";
 
 const videoStyle = {
   width: "100%",
