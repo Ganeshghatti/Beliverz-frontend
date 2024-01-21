@@ -154,7 +154,7 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="md:flex flex-col gap-12 hidden items-center mt-10">
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center" onClick={menuf}>
                   <Link
                     to="/account"
                     className="hover:text-blue text-black2 flex flex-col items-center"
