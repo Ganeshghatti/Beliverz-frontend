@@ -28,6 +28,7 @@ import AccordionGroup from "@mui/joy/AccordionGroup";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import instructorsimg from "./instructors.png";
 
 const videoStyle = {
   width: "100%",
@@ -234,7 +235,7 @@ export default function CourseDescription() {
                   onClick={() => scrollToSection("course-instructors")}
                   className=" p-0 flex items-center w-fit mt-2"
                 >
-                  <img src="/public\assets\Images\Courses\Instructors.png" />{" "}
+                  <img src={instructorsimg}/>{" "}
                   <p className="text-lg font-semibold text-black1">
                     Instructors
                   </p>

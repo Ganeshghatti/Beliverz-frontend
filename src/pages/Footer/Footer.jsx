@@ -51,7 +51,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      {courses.length > 1 && (
+      {courses.length > 0 && (
         <>
           <ul className="text-white flex flex-col custom-width-15 gap-6 font-normal md:w-full md:items-center">
             <p className="text-2xl md:text-xl font-semibold">Courses</p>

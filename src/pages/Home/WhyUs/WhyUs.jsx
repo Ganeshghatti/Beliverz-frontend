@@ -4,7 +4,7 @@ export default function WhyUs() {
   return (
     <section
       id="WhyUs"
-      className="flex flex-col gap-2 md:gap-8 custom-width-88 py-24 items-center md:py-8 md:w-full"
+      className="flex flex-col gap-2 md:gap-8 custom-width-88 py-24 items-center md:py-8 md:w-11/12"
     >
       <p
         className="text-5xl md:text-4xl font-medium text-black2 md:text-center"
@@ -16,7 +16,7 @@ export default function WhyUs() {
         Elevate Your Educational Journey: Discover the Distinct Advantages of
         Believerz Learning Spectrum.
       </p>
-      <div className="flex mt-24  md:mt-6 md:gap-12 md:flex-col flex-nowrap items-center justify-between w-full md:w-11/12">
+      <div className="flex mt-24  md:mt-6 md:gap-12 md:flex-col flex-nowrap items-center justify-between w-full">
         <div className="w-1/5 md:w-full flex flex-col gap-3">
           <div
             className="p-4 flex flex-col items-center justify-center w-fit rounded-xl"
