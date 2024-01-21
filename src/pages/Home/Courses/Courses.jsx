@@ -84,7 +84,7 @@ export default function Courses() {
     ],
   };
 
-  return courses && courses.length > 1 ? (
+  return courses && courses.length > 0 ? (
     <section
       id="courses"
       className="w-full py-24 flex items-center justify-center flex-col"
