@@ -13,6 +13,8 @@ import axios from "axios";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 export default function Account() {
   const user = useSelector((state) => state.user.user);
@@ -56,47 +58,55 @@ export default function Account() {
   }, [user]);
 
   return (
-    <section id="account" className="w-full flex-col flex items-center  py-20">
-      <Stack spacing={2}>{alert}</Stack>
-      {user.username && (
-        <div className="account-intro w-full flex justify-center">
-          <p className="w-3/5 md:w-11/12 font-semibold text-black2 text-xl md:text-lg text-center py-16 ">
-            Hi {user.username}, Welcome to courses!
-          </p>
-        </div>
-      )}{" "}
-      <div className="flex flex-col justify-center w-full items-center py-16">
-        <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
-          <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
-            Courses
-          </p>
-          <div className="flex gap-8 md:flex-col flex-wrap">
-            {enrolledcourses && enrolledcourses.length > 0 ? (
-              <>
-                {enrolledcourses.map((item, index) => (
-                  <Link
-                    to={`/courses/${item.currentlywatching.courseId}/${user.email}/${item.currentlywatching.chapterId}/${item.currentlywatching.contentId}`}
-                    key={item.courseId}
-                  >
-                    <div className="cursor-pointer relative account-courses-card gap-1 rounded-xl flex flex-col items-center">
-                      <img
-                        src={item.thumbnail || imgplaceholder}
-                        className="h-72 w-full object-cover rounded-xl"
-                      />
+    <>
+      {" "}
+      <Navbar />
+      <section
+        id="account"
+        className="w-full flex-col flex items-center  py-20"
+      >
+        <Stack spacing={2}>{alert}</Stack>
+        {user.username && (
+          <div className="account-intro w-full flex justify-center">
+            <p className="w-3/5 md:w-11/12 font-semibold text-black2 text-xl md:text-lg text-center py-16 ">
+              Hi {user.username}, Welcome to courses!
+            </p>
+          </div>
+        )}{" "}
+        <div className="flex flex-col justify-center w-full items-center py-16">
+          <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
+            <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
+              Courses
+            </p>
+            <div className="flex gap-8 md:flex-col flex-wrap">
+              {enrolledcourses && enrolledcourses.length > 0 ? (
+                <>
+                  {enrolledcourses.map((item, index) => (
+                    <Link
+                      to={`/courses/${item.currentlywatching.courseId}/${user.email}/${item.currentlywatching.chapterId}/${item.currentlywatching.contentId}`}
+                      key={item.courseId}
+                    >
+                      <div className="cursor-pointer relative account-courses-card gap-1 rounded-xl flex flex-col items-center">
+                        <img
+                          src={item.thumbnail || imgplaceholder}
+                          className="h-72 w-full object-cover rounded-xl"
+                        />
 
-                      <p className="w-11/12 font-medium text-black1 text-xl py-4">
-                        {item.courseName}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </>
-            ) : (
-              <Spinnerf />
-            )}
+                        <p className="w-11/12 font-medium text-black1 text-xl py-4">
+                          {item.courseName}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </>
+              ) : (
+                <Spinnerf />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>{" "}
+      <Footer />
+    </>
   );
 }

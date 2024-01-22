@@ -8,10 +8,13 @@ import Courses from "./Courses/Courses";
 import WhyUs from "./WhyUs/WhyUs";
 import BLS from "./BLS/BLS";
 import Contact from "./Contact/Contact";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center w-full">
+      <Navbar/>
       <Hero />
       <Numbers />
       <Courses />
@@ -20,6 +23,7 @@ export default function Home() {
       <WhyUs />
       <BLS />
       <Contact />
+      <Footer/>
     </div>
   );
 }

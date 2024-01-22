@@ -41,7 +41,6 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -59,7 +58,6 @@ export default function App() {
             element={<TermsandConditions />}
           />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );

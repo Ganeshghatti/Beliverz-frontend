@@ -28,6 +28,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { courseId, email, chapterId, contentId } = useParams();
+  console.log(courseId, email, chapterId, contentId);
 
   const [menu, setmenu] = useState(false);
   const user = useSelector((state) => state.user.user);
@@ -41,10 +42,8 @@ export default function Navbar() {
   };
   const navbardisplay =
     location.pathname === "/login" ||
-    location.pathname === "/signup" ||
-    location.pathname ===
-      `/courses/${courseId}/${email}/${chapterId}/${contentId}`;
-
+    location.pathname === "/signup" ;
+    
   const menuf = () => {
     setmenu(!menu);
   };
@@ -90,17 +89,19 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
-              <li>
+              <li className="flex justify-center">
                 <select
                   onChange={mobilenavf}
-                  className="bg-white border-none flex justify-center p-2"
+                  className="bg-white border-none flex justify-center p-2  w-2/3"
                 >
-                  <option value="">Select a Course</option>
+                  <option value="" className=" w-fit">
+                    Select a Course
+                  </option>
                   {courses.map((course) => (
                     <option
                       key={course.courseId}
                       value={course.courseId}
-                      className="flex justify-center p-2"
+                      className="flex justify-center p-2 "
                     >
                       {course.courseName}
                     </option>
@@ -234,7 +235,7 @@ export default function Navbar() {
             )}
           </div>
         </li>
-<li>
+        <li>
           <Link
             to="/#category"
             className={`${

@@ -12,7 +12,7 @@ export default function Hero() {
     >
       <div className="flex flex-col gap-4 w-1/2 md:w-11/12 pl-48 md:p-0  mt-16 md:mt-0 md:items-center">
         <p
-          className="text-5xl md:text-4xl font-medium text-black2 md:text-center"
+          className="text-5xl md:text-3xl font-medium text-black2 md:text-center"
           style={{ letterSpacing: "-1.12px", lineHeight: "normal" }}
         >
           Welcome to <span className="text-blue font-bold">Beliverz</span>

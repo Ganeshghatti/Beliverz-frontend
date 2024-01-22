@@ -29,6 +29,8 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import instructorsimg from "./Instructors.png";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const videoStyle = {
   width: "100%",
@@ -203,6 +205,7 @@ export default function CourseDescription() {
 
       {formData && formData.courseName && (
         <>
+          <Navbar />
           <section className="flex CourseDescription-sec1 w-screen h-screen md:h-auto md:items-center flex-col justify-center pt-10 md:pt-0">
             <div className="CourseDescription-sec1-details w-2/5 md:w-full md:h-screen md:bg-[#ebeffb] md:justify-center flex flex-col ml-40 md:m-0 gap-4 md:px-6 md:gap-6">
               <p className="text-black1 text-4xl md:text-3xl font-semibold">
@@ -235,7 +238,7 @@ export default function CourseDescription() {
                   onClick={() => scrollToSection("course-instructors")}
                   className=" p-0 flex items-center w-fit mt-2"
                 >
-                  <img src={instructorsimg}/>{" "}
+                  <img src={instructorsimg} />{" "}
                   <p className="text-lg font-semibold text-black1">
                     Instructors
                   </p>
@@ -489,7 +492,7 @@ export default function CourseDescription() {
               )}
             </div>
           </section>
-          <section className="flex md:flex-col md:gap-8 justify-between custom-width-88 md:w-11/12 mx-auto py-12 items-center">
+          <section className="flex md:flex-col md:gap-8 justify-between custom-width-88 md:w-11/12 mx-auto py-12 items-start">
             <div
               className="flex flex-col w-2/3  md:w-full"
               style={{ border: "1px solid #262626", borderRadius: "15px" }}
@@ -501,7 +504,7 @@ export default function CourseDescription() {
                       expanded={expandedPanel === `panel${index}-`}
                       onChange={handleChange(`panel${index}-`)}
                       style={{ boxShadow: "0", border: "0" }}
-                      className="p-4 CourseDescription-accordian bg-black"
+                      className="p-4 CourseDescription-accordian "
                     >
                       <AccordionSummary
                         expandIcon={
@@ -584,6 +587,7 @@ export default function CourseDescription() {
               </div>
             )}
           </section>
+          <Footer />
         </>
       )}
     </div>
