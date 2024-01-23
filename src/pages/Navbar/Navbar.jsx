@@ -128,14 +128,14 @@ export default function Navbar() {
                   Instructors
                 </Link>
               </li>{" "} */}
-              <li onClick={menuf}>
+              {/* <li onClick={menuf}>
                 <Link
                   to="/#testimonials"
                   className="text-black2 hover:text-blue"
                 >
                   Testimonials
                 </Link>
-              </li>{" "}
+              </li>{" "} */}
               <li onClick={menuf}>
                 <Link to="/#contact" className="text-black2 hover:text-blue">
                   Contact
@@ -260,11 +260,11 @@ export default function Navbar() {
           </Link>
         </li> */}
 
-        <li>
+        {/* <li>
           <Link to="/#testimonials" className="hover:text-blue text-black1">
             Testimonials
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/#contact" className="hover:text-blue text-black1">
             Contact
