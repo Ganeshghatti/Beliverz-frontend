@@ -64,7 +64,6 @@ export default function Account() {
   };
   return (
     <>
-      {" "}
       <Navbar />
       <section
         id="account"

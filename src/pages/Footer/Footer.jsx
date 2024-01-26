@@ -40,7 +40,7 @@ export default function Footer() {
   ) : (
     <footer
       id="footer"
-      className="flex md:flex-col justify-between py-12 md:gap-16 bg-blue "
+      className="flex md:flex-col justify-between py-12 md:gap-16 bg-blue w-full"
     >
       <div className="w-2/5 flex flex-col items-center md:w-full">
         <div className="flex flex-col md:items-center justify-center gap-4 w-3/5 md:w-4/5">

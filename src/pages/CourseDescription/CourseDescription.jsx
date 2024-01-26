@@ -548,43 +548,47 @@ export default function CourseDescription() {
             {instructorloading ? (
               <Spinnerf />
             ) : (
-              <div
-                id="course-instructors"
-                style={{ border: "1px solid black", borderRadius: "15px" }}
-                className="w-1/4 flex  flex-col gap-8 md:w-full justify-center py-6"
-              >
-                <p className="text-black1 text-2xl md:text-xl font-semibold px-12">
-                  Instructors
-                </p>
-                <div className="flex flex-col w-full">
-                  {instructors.map((item, index) => (
-                    <>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="inherit"
-                        height="2"
-                        viewBox="0 0 inherit 2"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 1L433 1.00004"
-                          stroke="#262626"
-                          stroke-width="0.518456"
-                        />
-                      </svg>{" "}
-                      <div
-                        className="w-full flex justify-left gap-4 py-4 items-center mx-auto  px-12"
-                        key={index}
-                      >
-                        <Avatar src={item.photo && item.photo} />
-                        <p className="text-black2 font-normal text-base md:text-sm">
-                          {item.instructorName}
-                        </p>
-                      </div>{" "}
-                    </>
-                  ))}
-                </div>
-              </div>
+              <>
+                {instructors && instructors.length > 0 && (
+                  <div
+                    id="course-instructors"
+                    style={{ border: "1px solid black", borderRadius: "15px" }}
+                    className="w-1/4 flex  flex-col gap-8 md:w-full justify-center py-6"
+                  >
+                    <p className="text-black1 text-2xl md:text-xl font-semibold px-12">
+                      Instructors
+                    </p>
+                    <div className="flex flex-col w-full">
+                      {instructors.map((item, index) => (
+                        <>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="inherit"
+                            height="2"
+                            viewBox="0 0 inherit 2"
+                            fill="none"
+                          >
+                            <path
+                              d="M0 1L433 1.00004"
+                              stroke="#262626"
+                              stroke-width="0.518456"
+                            />
+                          </svg>{" "}
+                          <div
+                            className="w-full flex justify-left gap-4 py-4 items-center mx-auto  px-12"
+                            key={index}
+                          >
+                            <Avatar src={item.photo && item.photo} />
+                            <p className="text-black2 font-normal text-base md:text-sm">
+                              {item.instructorName}
+                            </p>
+                          </div>{" "}
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
           </section>
           <Footer />
