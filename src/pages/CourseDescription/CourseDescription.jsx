@@ -146,7 +146,7 @@ export default function CourseDescription() {
       setLoading(false);
 
       navigate(
-        `/courses/${response.data.courseId}/${user.email}/${response.data.chapterId}/${response.data.contentId}`
+        `/courses/${response.data.currentlywatching.courseId}/${user.email}/${response.data.currentlywatching.chapterId}/${response.data.currentlywatching.contentId}`
       );
     } catch (error) {
       setLoading(false);

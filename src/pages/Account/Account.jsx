@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import imgplaceholder from "./imgplaceholder.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Spinnerf from "../../Components/Spinnerf";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
@@ -15,17 +15,19 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import emptycart from "./emptycart.jpeg";
 
 export default function Account() {
   const user = useSelector((state) => state.user.user);
   const [enrolledcourses, setenrolledcourses] = useState();
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (user.email !== null) {
+        if (user.token.length > 1) {
           setLoading(true);
           const response = await axios.get(
             `https://beliverz-user-server.vercel.app/user/account/${user.email}`,
@@ -35,7 +37,7 @@ export default function Account() {
               },
             }
           );
-          console.log(response.data);
+          console.log(response.data.user.coursesEnrolled);
           setenrolledcourses(response.data.user.coursesEnrolled);
           setLoading(false);
         }
@@ -57,6 +59,9 @@ export default function Account() {
     fetchData();
   }, [user]);
 
+  const viewallcoursesf = () => {
+    navigate("/#courses");
+  };
   return (
     <>
       {" "}
@@ -75,9 +80,11 @@ export default function Account() {
         )}{" "}
         <div className="flex flex-col justify-center w-full items-center py-16">
           <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
-            <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
-              Courses
-            </p>
+            {enrolledcourses && enrolledcourses.length > 1 && (
+              <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
+                Courses
+              </p>
+            )}
             <div className="flex gap-8 md:flex-col flex-wrap">
               {enrolledcourses && enrolledcourses.length > 0 ? (
                 <>
@@ -100,7 +107,25 @@ export default function Account() {
                   ))}
                 </>
               ) : (
-                <Spinnerf />
+                <section className="w-screen flex flex-col gap-4 items-center justify-center">
+                  <img
+                    src={emptycart}
+                    alt="no courses enrolled"
+                    className="w-1/4 md:w-1/2"
+                  />
+                  <p className="text-4xl md:text-3xl font-semibold">
+                    No courses Enrolled
+                  </p>
+                  <p className="text-lg md:text-base font-normal">
+                    Enroll courses to watch here
+                  </p>
+                  <button
+                    className="rounded-xl bg-blue text-white py-2 px-4"
+                    onClick={viewallcoursesf}
+                  >
+                    View All Courses
+                  </button>
+                </section>
               )}
             </div>
           </div>

@@ -28,7 +28,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { courseId, email, chapterId, contentId } = useParams();
-  console.log(courseId, email, chapterId, contentId);
 
   const [menu, setmenu] = useState(false);
   const user = useSelector((state) => state.user.user);
