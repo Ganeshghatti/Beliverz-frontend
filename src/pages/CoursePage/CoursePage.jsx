@@ -63,7 +63,7 @@ export default function CoursePage() {
   const [contentondisplay, setcontentondisplay] = useState();
   const [feedback, setFeedback] = useState({ rating: 0, comment: "" });
   const [modalopen, setmodalopen] = useState(false);
-  const [isfeedbackgiven, setisfeedbackgiven] = useState();
+  const [isfeedbackgiven, setisfeedbackgiven] = useState(true);
 
   const { courseId, email, chapterId, contentId } = useParams();
   const navigate = useNavigate();

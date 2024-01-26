@@ -144,7 +144,7 @@ export default function Courses() {
                 <Rating
                   value={item.courserating}
                   precision={0.25}
-                  emptyIcon={<StarBorderIcon style={{ fontSize: "18px" }} />}
+                  emptyIcon={<StarBorderIcon />}
                   readOnly
                 />
               </div>
