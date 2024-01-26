@@ -65,72 +65,82 @@ export default function Account() {
   return (
     <>
       <Navbar />
-      <section
-        id="account"
-        className="w-full flex-col flex items-center  py-20"
-      >
-        <Stack spacing={2}>{alert}</Stack>
-        {user.username && (
-          <div className="account-intro w-full flex justify-center">
-            <p className="w-3/5 md:w-11/12 font-semibold text-black2 text-xl md:text-lg text-center py-16 ">
-              Hi {user.username}, Welcome to courses!
-            </p>
-          </div>
-        )}{" "}
-        <div className="flex flex-col justify-center w-full items-center py-16">
-          <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
-            {enrolledcourses && enrolledcourses.length > 1 && (
-              <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
-                Courses
-              </p>
-            )}
-            <div className="flex gap-8 md:flex-col flex-wrap">
-              {enrolledcourses && enrolledcourses.length > 0 ? (
-                <>
-                  {enrolledcourses.map((item, index) => (
-                    <Link
-                      to={`/courses/${item.currentlywatching.courseId}/${user.email}/${item.currentlywatching.chapterId}/${item.currentlywatching.contentId}`}
-                      key={item.courseId}
-                    >
-                      <div className="cursor-pointer relative account-courses-card gap-1 rounded-xl flex flex-col items-center">
-                        <img
-                          src={item.thumbnail || imgplaceholder}
-                          className="h-72 w-full object-cover rounded-xl"
-                        />
+      {loading ? (
+        <Spinnerf />
+      ) : (
+        <>
+          <section
+            id="account"
+            className="w-full flex-col flex items-center  py-20"
+          >
+            <Stack spacing={2}>{alert}</Stack>
+            {user.username && (
+              <div className="account-intro w-full flex justify-center">
+                <p className="w-3/5 md:w-11/12 font-semibold text-black2 text-xl md:text-lg text-center py-16 ">
+                  Hi {user.username}, Welcome to courses!
+                </p>
+              </div>
+            )}{" "}
+            <div className="flex flex-col justify-center w-full items-center py-16">
+              <div className="w-3/4 flex flex-col gap-6 md:w-11/12">
+                {enrolledcourses && enrolledcourses.length > 1 && (
+                  <p className=" md:w-11/12 font-semibold text-black2 text-xl md:text-lg">
+                    Courses
+                  </p>
+                )}
+                <div className="flex gap-8 md:flex-col flex-wrap">
+                  {enrolledcourses && enrolledcourses.length > 0 ? (
+                    <>
+                      {enrolledcourses.map((item, index) => (
+                        <Link
+                          to={`/courses/${item.currentlywatching.courseId}/${user.email}/${item.currentlywatching.chapterId}/${item.currentlywatching.contentId}`}
+                          key={item.courseId}
+                        >
+                          <div className="cursor-pointer relative account-courses-card gap-1 rounded-xl flex flex-col items-center">
+                            <img
+                              src={item.thumbnail || imgplaceholder}
+                              className="h-72 w-full object-cover rounded-xl"
+                            />
 
-                        <p className="w-11/12 font-medium text-black1 text-xl py-4">
-                          {item.courseName}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </>
-              ) : (
-                <section className="w-screen flex flex-col gap-4 items-center justify-center">
-                  <img
-                    src={emptycart}
-                    alt="no courses enrolled"
-                    className="w-1/4 md:w-1/2"
-                  />
-                  <p className="text-4xl md:text-3xl font-semibold">
-                    No courses Enrolled
-                  </p>
-                  <p className="text-lg md:text-base font-normal">
-                    Enroll courses to watch here
-                  </p>
-                  <button
-                    className="rounded-xl bg-blue text-white py-2 px-4"
-                    onClick={viewallcoursesf}
-                  >
-                    View All Courses
-                  </button>
-                </section>
-              )}
+                            <p className="w-11/12 font-medium text-black1 text-xl py-4">
+                              {item.courseName}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      {enrolledcourses && enrolledcourses.length == 0 && (
+                        <section className="w-screen flex flex-col gap-4 items-center justify-center">
+                          <img
+                            src={emptycart}
+                            alt="no courses enrolled"
+                            className="w-1/4 md:w-1/2"
+                          />
+                          <p className="text-4xl md:text-3xl font-semibold">
+                            No courses Enrolled
+                          </p>
+                          <p className="text-lg md:text-base font-normal">
+                            Enroll courses to watch here
+                          </p>
+                          <button
+                            className="rounded-xl bg-blue text-white py-2 px-4"
+                            onClick={viewallcoursesf}
+                          >
+                            View All Courses
+                          </button>
+                        </section>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>{" "}
-      <Footer />
+          </section>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
