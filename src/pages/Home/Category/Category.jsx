@@ -19,11 +19,11 @@ export default function Category() {
         <p className="text-lg text-black3 md:text-base md:text-center">
           Various versions have evolved over the years, sometimes by accident,
         </p>
-        <div className="flex flex-wrap md:flex-col w-full mt-12 justify-between gap-y-32 lg:gap-y-16 md:gap-y-8 md:items-center md:w-full">
+        <div className="flex flex-wrap md:flex-col w-full mt-12 justify-between gap-y-32 lg:gap-y-16 md:gap-y-8 md:items-center">
           {category.map((item, index) => (
             <div className="home-category-card md:w-full relative">
               <div className="home-category-card-gradient absolute w-full h-full" />
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="35"
                 height="36"
@@ -49,12 +49,12 @@ export default function Category() {
                   d="M22.4184 11.2827L23.5746 17.8397C23.6111 18.0544 23.5616 18.2749 23.4367 18.4532C23.3118 18.6316 23.1216 18.7536 22.9073 18.7927C22.4641 18.8708 22.0326 18.5687 21.9544 18.1254L21.1432 13.5248L14.7289 22.6854C14.4708 23.054 13.9511 23.1456 13.5825 22.8875C13.214 22.6294 13.1223 22.1097 13.3804 21.7412L19.7947 12.5806L15.1941 13.3918C14.7508 13.4699 14.3193 13.1678 14.2412 12.7246C14.2008 12.4953 14.2574 12.2804 14.377 12.1096C14.4966 11.9388 14.6791 11.8121 14.9084 11.7716L21.4655 10.6154C21.6803 10.5777 21.9013 10.6268 22.08 10.7519C22.2587 10.877 22.3804 11.0679 22.4184 11.2827Z"
                   fill="white"
                 />
-              </svg>
+              </svg> */}
               <img
                 src={item.categoryImg}
                 className="object-cover w-full h-full"
               />
-              <p className="text-3xl text-white md:text-2xl absolute bottom-4 text-center left-1/2 transform -translate-x-1/2 font-medium uppercase">
+              <p className="text-3xl text-white md:text-2xl absolute bottom-4 text-center left-1/2 w-full transform -translate-x-1/2 font-medium uppercase ">
                 {item.categoryName}
               </p>
             </div>

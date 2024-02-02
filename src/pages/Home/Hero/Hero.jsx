@@ -15,8 +15,11 @@ export default function Hero() {
           className="text-5xl md:text-3xl font-medium text-black2 md:text-center"
           style={{ letterSpacing: "-1.12px", lineHeight: "normal" }}
         >
-          Welcome to <span className="text-blue font-bold">Beliverz</span>
-          <br className="md:hidden" /> Learning Spectrum
+          Conquer your
+          <span className="text-blue font-bold">
+            &nbsp; Goals ,<br />
+          </span>
+          Achieve Your <span className="text-blue font-bold">Dreams</span>
         </p>
         <p className="text-black3 text-lg md:text-center">
           Nurture Your Professional Aspirations with Us. Conquer JRF, Achieve
@@ -41,7 +44,11 @@ export default function Hero() {
         </div>
       </div>
       <div className="w-1/2 md:w-11/12">
-        <img src="./assets/Images/Home/Hero.png" />
+        {user.email ? (
+          <img src="./assets/Images/Home/HeroAfterLogin.png" />
+        ) : (
+          <img src="./assets/Images/Home/HeroBeforeLogin.png"/>
+        )}
       </div>
     </section>
   );
