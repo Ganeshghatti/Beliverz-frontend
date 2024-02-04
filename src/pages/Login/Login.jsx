@@ -22,7 +22,7 @@ import Spinnerf from "../../Components/Spinnerf";
 import { Stack } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import { Link } from "react-router-dom";
-import loginimg from "./loginimg.jpeg";
+import loginimg from "./loginimg.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -101,7 +101,7 @@ const Login = () => {
   return (
     <section className="w-screen h-screen flex justify-center" id="login">
       {loading && <Spinnerf />} <Stack spacing={2}>{alert}</Stack>
-      <div className="flex flex-col justify-center items-center w-1/2 md:w-full">
+      <div className="flex flex-col justify-center items-center w-1/2 md:w-full md:bg-blue">
         <form
           onSubmit={handleSubmit}
           className="rounded md:w-full w-11/12 flex flex-col gap-5 px-14 justify-center bg-white md:py-12 md:px-6"
@@ -161,7 +161,9 @@ const Login = () => {
           </p>
         </form>
       </div>{" "}
-      <img src={loginimg} className="w-1/2 md:hidden object-cover" />
+      <div className="w-1/2 bg-blue flex justify-center items-center md:hidden">
+        <img src={loginimg} className="object-contain" />
+      </div>
     </section>
   );
 };

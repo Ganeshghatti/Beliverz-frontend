@@ -119,8 +119,7 @@ const Signup = () => {
     <section className="w-screen h-screen flex justify-center" id="signup">
       {loading && <Spinnerf />}
       <Stack spacing={2}>{alert}</Stack>
-      <img src={signupimg} className="w-1/2 md:hidden object-cover" />
-      <div className="flex flex-col justify-center items-center w-1/2 md:w-full ">
+      <div className="flex flex-col justify-center items-center w-1/2 md:w-full md:bg-blue">
         <form
           onSubmit={handleSubmit}
           className="rounded md:w-full w-11/12 flex flex-col gap-5 px-14 justify-center bg-white md:py-12 md:px-6"
@@ -227,6 +226,9 @@ const Signup = () => {
             </Link>
           </p>
         </form>
+      </div>{" "}
+      <div className="w-1/2 bg-blue flex justify-center items-center md:hidden">
+        <img src={signupimg} className="object-contain" />
       </div>
     </section>
   );
