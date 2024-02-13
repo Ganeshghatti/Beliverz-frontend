@@ -22,8 +22,7 @@ export default function Hero() {
           Achieve Your <span className="text-blue font-bold">Dreams</span>
         </p>
         <p className="text-black3 text-lg md:text-center">
-          Nurture Your Professional Aspirations with Us. Conquer JRF, Achieve
-          Your Dreams!
+          Nurture Your Professional Aspirations with Us.
         </p>
         {!user.email && (
           <Link to="/login" className="w-fit">
@@ -40,7 +39,7 @@ export default function Hero() {
             </p>
             <img src="./assets/Images/Home/HeroInstGroup.png" />
           </div>
-          <p className="text-black3 text-lg font-normal">Worldwide Learners</p>
+          <p className="text-black3 text-lg font-normal">National Learners</p>
         </div>
       </div>
       <div className="w-1/2 md:w-11/12">

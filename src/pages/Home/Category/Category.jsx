@@ -1,10 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Category() {
-  const category = useSelector((state) => state.category.categories);
+  const initailly_having_only_one_course = useSelector(
+    (state) => state.category.categories[0]
+  );
+  let category = [];
+  if (initailly_having_only_one_course) {
+    category.push(initailly_having_only_one_course);
+    console.log(category);
+  }
 
-  return category && category.length >1 ? (
+  return category && category.length > 0 ? (
     <section
       id="category"
       className="w-full py-24 items-center justify-center flex"
@@ -14,7 +22,8 @@ export default function Category() {
           className="text-5xl md:text-4xl font-medium text-black2 md:text-center"
           style={{ letterSpacing: "-1.12px", lineHeight: "normal" }}
         >
-          Most <span className="text-blue font-medium">Popular Categories</span>
+          Most Popular{" "}
+          <span className="text-blue font-medium">Course Categories</span>
         </p>
         <p className="text-lg text-black3 md:text-base md:text-center">
           Various versions have evolved over the years, sometimes by accident,
@@ -22,8 +31,9 @@ export default function Category() {
         <div className="flex flex-wrap md:flex-col w-full mt-12 justify-between gap-y-32 lg:gap-y-16 md:gap-y-8 md:items-center">
           {category.map((item, index) => (
             <div className="home-category-card md:w-full relative">
-              <div className="home-category-card-gradient absolute w-full h-full" />
-              {/* <svg
+              <Link to="/#courses">
+                <div className="home-category-card-gradient absolute w-full h-full" />
+                {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="35"
                 height="36"
@@ -50,13 +60,14 @@ export default function Category() {
                   fill="white"
                 />
               </svg> */}
-              <img
-                src={item.categoryImg}
-                className="object-cover w-full h-full"
-              />
-              <p className="text-3xl text-white md:text-2xl absolute bottom-4 text-center left-1/2 w-full transform -translate-x-1/2 font-medium uppercase ">
-                {item.categoryName}
-              </p>
+                <img
+                  src={item.categoryImg}
+                  className="object-cover w-full h-full"
+                />
+                <p className="text-3xl text-white md:text-2xl absolute bottom-4 text-center left-1/2 w-full transform -translate-x-1/2 font-medium uppercase ">
+                  {item.categoryName}
+                </p>{" "}
+              </Link>
             </div>
           ))}
         </div>

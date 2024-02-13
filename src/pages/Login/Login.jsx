@@ -160,7 +160,7 @@ const Login = () => {
             </Link>
           </p>
         </form>
-      </div>{" "}
+      </div>
       <div className="w-1/2 bg-blue flex justify-center items-center md:hidden">
         <img src={loginimg} className="object-contain" />
       </div>

@@ -124,7 +124,7 @@ export default function Overview() {
             className="self-center text-blue text-lg font-medium"
             onClick={clickviewmoref}
           >
-            collapse
+            know less
             <KeyboardArrowUpIcon style={{ color: "blue" }} />
           </button>
         </>

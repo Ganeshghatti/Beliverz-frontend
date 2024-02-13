@@ -119,7 +119,7 @@ export default function BLS() {
           </div>
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Management{" "}
+              Music
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
               In the realm of Management, our platform is your guide to
@@ -295,7 +295,7 @@ export default function BLS() {
           </div>{" "}
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Economics{" "}
+              Commerce
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
               Navigating the complexities of economics in preparation for your
@@ -382,7 +382,7 @@ export default function BLS() {
           </div>{" "}
           <div className="flex flex-col md:items-center gap-4 p-8 BLS-card rounded-xl w-11/12 md:w-full md:p-4">
             <p className="text-black1 text-2xl md:text-lg font-medium md:text-center">
-              Law{" "}
+              Upcoming
             </p>
             <p className="text-[#586174] text-sm font-normal md:text-center">
               For those pursuing JRF in Law, our platform serves as your
