@@ -95,7 +95,7 @@ export default function CoursePage() {
       if (feedback.rating > 0 && courseId && email) {
         setLoading(true);
         const response = await axios.post(
-          `https://beliverz-user-server.vercel.app/user/courses/${courseId}/${email}/submitfeedback`,
+          `https://beliverz-server.vercel.app/user/courses/${courseId}/${email}/submitfeedback`,
           { feedback, courseId, email },
           {
             headers: {
@@ -146,7 +146,7 @@ export default function CoursePage() {
         if (user.token) {
           setLoading(true);
           const response = await axios.get(
-            `https://beliverz-user-server.vercel.app/user/courses/${courseId}/get-chapters-list`,
+            `https://beliverz-server.vercel.app/user/courses/${courseId}/get-chapters-list`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
@@ -182,7 +182,7 @@ export default function CoursePage() {
           setLoading(true);
           console.log(user.token);
           const response = await axios.get(
-            `https://beliverz-user-server.vercel.app/user/courses/${courseId}/${email}/${chapterId}/${contentId}`,
+            `https://beliverz-server.vercel.app/user/courses/${courseId}/${email}/${chapterId}/${contentId}`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,

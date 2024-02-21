@@ -8,7 +8,7 @@ export const fetchAndDispatchCategories = async () => {
   const dispatch = useDispatch();
   try {
     const response = await axios.get(
-      "https://beliverz-user-server.vercel.app/user/get-all-category"
+      "https://beliverz-server.vercel.app/user/get-all-category"
     );
     localStorage.setItem("category", response.data.category);
     dispatch(allcategories(response.data.category));
@@ -20,7 +20,7 @@ export const fetchAndDispatchCoursenames = async () => {
   const dispatch = useDispatch();
   try {
     const response = await axios.get(
-      "https://beliverz-user-server.vercel.app/user/get-all-coursenames"
+      "https://beliverz-server.vercel.app/user/get-all-coursenames"
     );
 
     localStorage.setItem("courses", response.data.courses);

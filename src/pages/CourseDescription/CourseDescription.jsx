@@ -66,7 +66,7 @@ export default function CourseDescription() {
         if (courseId) {
           setLoading(true);
           const response = await axios.get(
-            `https://beliverz-user-server.vercel.app/user/courses/${courseId}`
+            `https://beliverz-server.vercel.app/user/courses/${courseId}`
           );
           console.log(response.data.course);
           setFormData(response.data.course);
@@ -96,7 +96,7 @@ export default function CourseDescription() {
         if (courseId) {
           setinstructorLoading(true);
           const response = await axios.get(
-            `https://beliverz-user-server.vercel.app/user/courses/${courseId}/instructors`
+            `https://beliverz-server.vercel.app/user/courses/${courseId}/instructors`
           );
           setinstructors(response.data.instructors);
           setinstructorLoading(false);
@@ -127,7 +127,7 @@ export default function CourseDescription() {
     try {
       setLoading(true);
       const response = await axios.post(
-        `https://beliverz-user-server.vercel.app/user/courses/${courseId}/course-enroll`,
+        `https://beliverz-server.vercel.app/user/courses/${courseId}/course-enroll`,
         { email: user.email, courseId },
         {
           headers: {

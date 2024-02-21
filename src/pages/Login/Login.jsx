@@ -63,7 +63,7 @@ const Login = () => {
       setLoading(true);
       console.log(formData);
       const response = await axios.post(
-        "https://beliverz-user-server.vercel.app/user/login",
+        "https://beliverz-server.vercel.app/user/login",
         formData
       );
       console.log(response.data);

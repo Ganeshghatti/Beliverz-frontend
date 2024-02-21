@@ -30,7 +30,7 @@ export default function Account() {
         if (user.token.length > 1) {
           setLoading(true);
           const response = await axios.get(
-            `http://localhost:5000/user/account/${user.email}`,
+            `https://beliverz-server.vercel.app/user/account/${user.email}`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
