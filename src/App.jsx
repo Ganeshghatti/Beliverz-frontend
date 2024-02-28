@@ -18,6 +18,7 @@ import TermsandConditions from "./Components/TermsandConditions";
 import CourseDescription from "./pages/CourseDescription/CourseDescription";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import Account from "./pages/Account/Account";
+import ResetPassword from "./Components/ResetPassword";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,10 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/account" element={<Account />} />
+          <Route
+            path="/reset/:resetToken"
+            element={<ResetPassword />}
+          />
           <Route path="/courses/:courseId" element={<CourseDescription />} />
           <Route
             path="/courses/:courseId/:email/:chapterId/:contentId"

@@ -35,6 +35,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { TextField, Container } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { REACT_APP_BACK_URL } from "../../config/config";
 
 const style = {
   position: "absolute",
@@ -95,7 +96,7 @@ export default function CoursePage() {
       if (feedback.rating > 0 && courseId && email) {
         setLoading(true);
         const response = await axios.post(
-          `https://beliverz-server.vercel.app/user/courses/${courseId}/${email}/submitfeedback`,
+          `${REACT_APP_BACK_URL}/user/courses/${courseId}/${email}/submitfeedback`,
           { feedback, courseId, email },
           {
             headers: {
@@ -146,7 +147,7 @@ export default function CoursePage() {
         if (user.token) {
           setLoading(true);
           const response = await axios.get(
-            `https://beliverz-server.vercel.app/user/courses/${courseId}/get-chapters-list`,
+            `${REACT_APP_BACK_URL}/user/courses/${courseId}/get-chapters-list`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,
@@ -182,7 +183,7 @@ export default function CoursePage() {
           setLoading(true);
           console.log(user.token);
           const response = await axios.get(
-            `https://beliverz-server.vercel.app/user/courses/${courseId}/${email}/${chapterId}/${contentId}`,
+            `${REACT_APP_BACK_URL}/user/courses/${courseId}/${email}/${chapterId}/${contentId}`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,

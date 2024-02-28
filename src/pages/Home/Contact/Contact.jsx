@@ -10,6 +10,7 @@ import Facebook from "./Icons/Facebook.png";
 import Instagram from "./Icons/Instagram.png";
 import Twitter from "./Icons/Twitter.png";
 import LinkedIn from "./Icons/LinkedIn.png";
+import { REACT_APP_BACK_URL } from "../../../config/config";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,8 +35,10 @@ export default function Contact() {
 
     try {
       setLoading(true);
-      const response = await axios.post("https://beliverz-server.vercel.app/user/form", formData);
-      console.log(response);
+      const response = await axios.post(
+        `${REACT_APP_BACK_URL}/user/form`,
+        formData
+      );
       setAlert(
         <Alert
           style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
@@ -46,7 +49,7 @@ export default function Contact() {
         </Alert>
       );
       setTimeout(() => setAlert(null), 5000);
-      setFormData({email:"",name:"",phone:"",query:""})
+      setFormData({ email: "", name: "", phone: "", query: "" });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -117,7 +120,12 @@ export default function Contact() {
               </div>
 
               <p className="text-xl md:text-lg font-medium">Email</p>
-              <a href="mailto:contact@beliverz.com" className="text-base md:text-sm">contact@beliverz.com</a>
+              <a
+                href="mailto:contact@beliverz.com"
+                className="text-base md:text-sm"
+              >
+                contact@beliverz.com
+              </a>
             </div>
             <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
@@ -150,7 +158,9 @@ export default function Contact() {
                 </div>
               </div>
               <p className="text-xl md:text-lg font-medium">Phone</p>
-              <a href="tel:+91 999999999" className="text-base md:text-sm">+91 999999999</a>
+              <a href="tel:+91 999999999" className="text-base md:text-sm">
+                +91 999999999
+              </a>
             </div>
             <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div
@@ -183,7 +193,12 @@ export default function Contact() {
                 </div>
               </div>
               <p className="text-xl md:text-lg font-medium">Office</p>
-              <a href="mailto:contact@beliverz.com" className="text-base md:text-sm">contact@beliverz.com</a>
+              <a
+                href="mailto:contact@beliverz.com"
+                className="text-base md:text-sm"
+              >
+                contact@beliverz.com
+              </a>
             </div>
             <div className="w-1/2 flex flex-col gap-2 md:items-center">
               <div

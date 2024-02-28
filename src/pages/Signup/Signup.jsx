@@ -26,7 +26,9 @@ import Spinnerf from "../../Components/Spinnerf";
 import { Stack } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import signupimg from "./signupimg.png";
+import { REACT_APP_BACK_URL } from "../../config/config";
 
+const url = import.meta.env.VITE_REACT_APP_BACK_URL;
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -80,10 +82,9 @@ const Signup = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "https://beliverz-server.vercel.app/user/register",
+        `${REACT_APP_BACK_URL}/user/register`,
         formData
       );
-      console.log(response);
       const user = {
         email: response.data.email,
         username: response.data.username,

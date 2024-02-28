@@ -31,6 +31,7 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import instructorsimg from "./Instructors.png";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { REACT_APP_BACK_URL } from "../../config/config";
 
 const videoStyle = {
   width: "100%",
@@ -66,7 +67,7 @@ export default function CourseDescription() {
         if (courseId) {
           setLoading(true);
           const response = await axios.get(
-            `https://beliverz-server.vercel.app/user/courses/${courseId}`
+            `${REACT_APP_BACK_URL}/user/courses/${courseId}`
           );
           console.log(response.data.course);
           setFormData(response.data.course);
@@ -96,7 +97,7 @@ export default function CourseDescription() {
         if (courseId) {
           setinstructorLoading(true);
           const response = await axios.get(
-            `https://beliverz-server.vercel.app/user/courses/${courseId}/instructors`
+            `${REACT_APP_BACK_URL}/user/courses/${courseId}/instructors`
           );
           setinstructors(response.data.instructors);
           setinstructorLoading(false);
@@ -127,7 +128,7 @@ export default function CourseDescription() {
     try {
       setLoading(true);
       const response = await axios.post(
-        `https://beliverz-server.vercel.app/user/courses/${courseId}/course-enroll`,
+        `${REACT_APP_BACK_URL}/user/courses/${courseId}/course-enroll`,
         { email: user.email, courseId },
         {
           headers: {
