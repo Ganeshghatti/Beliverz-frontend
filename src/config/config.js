@@ -1,2 +1,2 @@
-export const REACT_APP_BACK_URL ="https://api.beliverzjrf.com"
+export const REACT_APP_BACK_URL ="https://beliverz-server.vercel.app/"
 //  "https://api.beliverzjrf.com";
