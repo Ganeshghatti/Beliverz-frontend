@@ -1,1 +1,2 @@
-export const REACT_APP_BACK_URL = "https://api.beliverzjrf.com";
+export const REACT_APP_BACK_URL ="https://api.beliverzjrf.com"
+//  "https://api.beliverzjrf.com";

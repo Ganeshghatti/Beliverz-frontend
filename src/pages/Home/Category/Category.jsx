@@ -9,7 +9,6 @@ export default function Category() {
   let category = [];
   if (initailly_having_only_one_course) {
     category.push(initailly_having_only_one_course);
-    console.log(category);
   }
 
   return category && category.length > 0 ? (

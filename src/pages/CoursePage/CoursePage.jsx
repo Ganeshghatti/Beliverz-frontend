@@ -274,7 +274,7 @@ export default function CoursePage() {
         </Box>
       </Modal>
       {open && (
-        <div className="overflow-y-auto md:absolute top-0 left-0 h-screen w-96 md:w-full flex flex-col justify-start">
+        <div className="overflow-y-auto md:absolute top-0 left-0 h-screen w-96 md:w-full flex flex-col justify-start z-50">
           <div className="w-full bg-blue px-4 h-20 flex items-center justify-between">
             <Link
               to="/account"

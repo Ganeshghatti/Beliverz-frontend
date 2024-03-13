@@ -10,20 +10,22 @@ import BLS from "./BLS/BLS";
 import Contact from "./Contact/Contact";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Testseries from "./Testseries/Testseries";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center w-full">
-      <Navbar/>
+      <Navbar />
       <Hero />
       {/* <Numbers /> */}
       <Courses />
+      <Testseries/>
       <Overview />
       <Category />
       <WhyUs />
       <BLS />
       <Contact />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

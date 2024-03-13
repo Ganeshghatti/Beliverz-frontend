@@ -10,6 +10,7 @@ import Instructors from "./pages/Instructors/Instructors";
 import {
   fetchAndDispatchCategories,
   fetchAndDispatchCoursenames,
+  fetchAndDispatchTestseriesnames,
 } from "./routes/RoutesOnLoad";
 import { useDispatch } from "react-redux";
 import { saveuser } from "./features/User";
@@ -19,6 +20,10 @@ import CourseDescription from "./pages/CourseDescription/CourseDescription";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import Account from "./pages/Account/Account";
 import ResetPassword from "./Components/ResetPassword";
+import TestseriesPage from "../../Admin/Frontend/src/Pages/Admin/TestseriesPage/TestseriesPage";
+import TestseriesDescription from "./pages/TestseriesDescription/TestseriesDescription";
+import Testseriespage from "./pages/Testseriespage/Testseriespage";
+import TestSeriesResults from "./pages/TestSeriesResults/TestSeriesResults";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -38,6 +43,7 @@ export default function App() {
   }, []);
   fetchAndDispatchCategories();
   fetchAndDispatchCoursenames();
+  fetchAndDispatchTestseriesnames();
 
   return (
     <>
@@ -48,14 +54,23 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/account" element={<Account />} />
-          <Route
-            path="/reset/:resetToken"
-            element={<ResetPassword />}
-          />
+          <Route path="/reset/:resetToken" element={<ResetPassword />} />
           <Route path="/courses/:courseId" element={<CourseDescription />} />
+          <Route
+            path="/testseries/:testseriesId"
+            element={<TestseriesDescription />}
+          />
           <Route
             path="/courses/:courseId/:email/:chapterId/:contentId"
             element={<CoursePage />}
+          />
+          <Route
+            path="/testseries/:testseriesId/:email/test"
+            element={<Testseriespage />}
+          />{" "}
+          <Route
+            path="/testseries/:testseriesId/:email/results"
+            element={<TestSeriesResults />}
           />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route

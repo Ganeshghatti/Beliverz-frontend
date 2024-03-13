@@ -39,9 +39,6 @@ export default function Navbar() {
     localStorage.clear();
     window.location.href = "/";
   };
-  const navbardisplay =
-    location.pathname === "/login" ||
-    location.pathname === "/signup" ;
     
   const menuf = () => {
     setmenu(!menu);
@@ -59,9 +56,7 @@ export default function Navbar() {
     setmenu(!menu);
   };
 
-  return navbardisplay ? (
-    ""
-  ) : (
+  return (
     <nav
       id="navbar"
       className="absolute w-screen flex justify-around items-center py-12 z-50 md:justify-between md:overflow-x-hidden md:px-8 left-0 top-0"

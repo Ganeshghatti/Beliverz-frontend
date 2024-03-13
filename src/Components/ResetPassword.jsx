@@ -76,8 +76,7 @@ const ResetPassword = () => {
         formData
       );
       setLoading(false);
-      console.log(response);
-        window.location.href = "http://beliverzjrf.com";
+      window.location.href = "http://beliverzjrf.com";
     } catch (error) {
       setLoading(false);
       console.log(error);
