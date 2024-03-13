@@ -20,7 +20,6 @@ import CourseDescription from "./pages/CourseDescription/CourseDescription";
 import CoursePage from "./pages/CoursePage/CoursePage";
 import Account from "./pages/Account/Account";
 import ResetPassword from "./Components/ResetPassword";
-import TestseriesPage from "../../Admin/Frontend/src/Pages/Admin/TestseriesPage/TestseriesPage";
 import TestseriesDescription from "./pages/TestseriesDescription/TestseriesDescription";
 import Testseriespage from "./pages/Testseriespage/Testseriespage";
 import TestSeriesResults from "./pages/TestSeriesResults/TestSeriesResults";
