@@ -64,13 +64,19 @@ export default function CourseDescription() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (courseId) {
+        if (courseId && user.token) {
+          console.log(user.token);
           setLoading(true);
           const response = await axios.get(
-            `${REACT_APP_BACK_URL}/user/courses/${courseId}`
+            `${REACT_APP_BACK_URL}/user/courses/${courseId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
           );
-          console.log(response.data.course);
-          setFormData(response.data.course);
+          console.log(response.data)
+          setFormData(response.data);
           setLoading(false);
         }
       } catch (error) {
@@ -171,6 +177,11 @@ export default function CourseDescription() {
     }
   };
 
+  const gotoCourse = () => {
+    navigate(
+      `/courses/${formData.enrolledCourse.currentlywatching.courseId}/${user.email}/${formData.enrolledCourse.currentlywatching.chapterId}/${formData.enrolledCourse.currentlywatching.contentId}`
+    );
+  };
   return loading ? (
     <>
       <Spinnerf />
@@ -179,14 +190,14 @@ export default function CourseDescription() {
   ) : (
     <div className="CourseDescription flex flex-col" id="CourseDescription">
       <Stack spacing={2}>{alert}</Stack>
-      {formData.introVideo && (
+      {formData && formData.course && formData.course.introVideo && (
         <>
           {fullscreenvideo && (
             <div
               className="fixed w-screen h-screen bg-black bg-opacity-60 flex items-center justify-center z-50"
               onClick={fullscreenvideof}
             >
-              {formData.introVideo ? (
+              {formData.course.introVideo ? (
                 <video style={fullscreenvideoStyle} controls>
                   <source src={formData.introVideo} type="video/mp4" />
                   Your browser does not support the video
@@ -204,19 +215,19 @@ export default function CourseDescription() {
         </>
       )}
 
-      {formData && formData.courseName && (
+      {formData.course && formData.course.courseName && (
         <>
           <Navbar />
           <section className="flex CourseDescription-sec1 w-screen h-screen md:h-auto md:items-center flex-col justify-center pt-10 md:pt-0">
             <div className="CourseDescription-sec1-details w-2/5 md:w-full md:h-screen md:bg-[#ebeffb] md:justify-center flex flex-col ml-40 md:m-0 gap-4 md:px-6 md:gap-6">
               <p className="text-black1 text-4xl md:text-3xl font-semibold">
-                {formData.courseName}
+                {formData.course.courseName}
               </p>
               <p className="text-black1 text-lg md:text-base font-normal">
-                {formData.courseDescription}
+                {formData.course.courseDescription}
               </p>
               <p className="text-black1 text-base font-normal">
-                {formData.language && (
+                {formData.course.language && (
                   <span className="flex gap-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -230,11 +241,11 @@ export default function CourseDescription() {
                         fill="#262626"
                       />
                     </svg>
-                    Taught in {formData.language}
+                    Taught in {formData.course.language}
                   </span>
                 )}
               </p>
-              {formData.instructors.length > 0 && (
+              {formData.course.instructors.length > 0 && (
                 <button
                   onClick={() => scrollToSection("course-instructors")}
                   className=" p-0 flex items-center w-fit mt-2"
@@ -247,13 +258,23 @@ export default function CourseDescription() {
               )}
 
               <div className="flex gap-3.5 w-3/5 md:w-full justify-between my-4">
-                <button
-                  className="custom-width-45 bg-[#5A81EE] py-3 md:py-2 rounded-xl text-white text-lg font-semibold"
-                  onClick={enrollNowf}
-                >
-                  Enroll Now!
-                </button>
-                {formData.introVideo && (
+                {formData.isEnrolled ? (
+                  <button
+                    className="custom-width-45 bg-[#5A81EE] py-3 md:py-2 rounded-xl text-white text-lg font-semibold"
+                    onClick={gotoCourse}
+                  >
+                    Go to course
+                  </button>
+                ) : (
+                  <button
+                    className="custom-width-45 bg-[#5A81EE] py-3 md:py-2 rounded-xl text-white text-lg font-semibold"
+                    onClick={enrollNowf}
+                  >
+                    Enroll Now!
+                  </button>
+                )}
+
+                {formData.course.introVideo && (
                   <button
                     className="custom-width-45 text-[#5A81EE] py-3 md:py-2 rounded-xl flex gap-1 items-center text-lg font-semibold"
                     onClick={fullscreenvideof}
@@ -293,7 +314,7 @@ export default function CourseDescription() {
               </div>
               <div className="flex flex-col gap-1">
                 <p className="text-black1 text-4xl md:text-3xl font-semibold">
-                  {formData.courseInfo.totalEnrollments}+
+                  {formData.course.courseInfo.totalEnrollments}+
                 </p>
                 <span className="text-sm">Already Enrolled</span>
               </div>
@@ -325,7 +346,7 @@ export default function CourseDescription() {
                       fill="#5A81EE"
                     />
                   </svg>
-                  <span>{formData.courseInfo.level}</span>
+                  <span>{formData.course.courseInfo.level}</span>
                 </p>
                 <div className="flex items-center gap-4">
                   <svg
@@ -341,17 +362,17 @@ export default function CourseDescription() {
                     />
                   </svg>
                   <p className="text-black1 text-xl md:text-lg font-medium">
-                    {formData.rating}
+                    {formData.course.rating}
                   </p>
                   <div className="flex flex-col justify-center">
                     <Rating
-                      value={formData.rating}
+                      value={formData.course.rating}
                       precision={0.25}
                       emptyIcon={<StarBorderIcon fontSize="inherit" />}
                       readOnly
                     />{" "}
                     <span className="text-[#586174] text-sm md:text-xs font-normal">
-                      ({formData.NumberOfRatings} student reviews )
+                      ({formData.course.NumberOfRatings} student reviews )
                     </span>
                   </div>
                 </div>
@@ -370,7 +391,7 @@ export default function CourseDescription() {
                   </svg>
                   <span>
                     {" "}
-                    Duration : {formData.courseDetail.totalHours} hours
+                    Duration : {formData.course.courseDetail.totalHours} hours
                   </span>
                 </p>
                 <p className="text-black1 text-xl md:text-lg font-medium flex items-center gap-4">
@@ -392,7 +413,7 @@ export default function CourseDescription() {
                   </svg>
                   <span>
                     {" "}
-                    {formData.courseDetail.numberOfChapters} Chapters
+                    {formData.course.courseDetail.numberOfChapters} Chapters
                   </span>
                 </p>
                 <p className="text-black1 text-xl md:text-lg font-medium flex items-center gap-4">
@@ -428,12 +449,12 @@ export default function CourseDescription() {
                   className="bg-blue text-white w-1/2 py-5 text-center text-xl font-semibold items-center flex justify-center"
                   style={{ borderRadius: "0 0  20px 0" }}
                 >
-                  {formData.payment === "free" ? (
+                  {formData.course.payment === "free" ? (
                     <span>Free</span>
                   ) : (
                     <>
                       <CurrencyRupeeIcon />
-                      {formData.amountInINR}
+                      {formData.course.amountInINR}
                     </>
                   )}
                 </Link>
@@ -442,13 +463,13 @@ export default function CourseDescription() {
           </section>
           <section className="flex justify-center gap-10 items-center w-full md:flex-col-reverse py-16">
             <div className="flex flex-col gap-8 w-1/2 md:w-11/12">
-              {formData.whatWillYouLearn.length > 0 && (
+              {formData.course.whatWillYouLearn.length > 0 && (
                 <div className="flex flex-col gap-4">
                   <p className="text-black1 text-2xl md:text-xl font-semibold">
                     What you'll learn
                   </p>
                   <ul className="flex flex-wrap md:flex-col justify-between gap-y-4">
-                    {formData.whatWillYouLearn.map((item, index) => (
+                    {formData.course.whatWillYouLearn.map((item, index) => (
                       <li
                         className="text-lg text-black2 md:text-base font-normal flex items-start custom-width-45 md:w-full"
                         key={index}
@@ -464,13 +485,13 @@ export default function CourseDescription() {
                   </ul>
                 </div>
               )}
-              {formData.courseDetail.tags.length > 0 && (
+              {formData.course.courseDetail.tags.length > 0 && (
                 <div className="flex flex-col gap-4">
                   <p className="text-black1 text-2xl md:text-xl font-semibold">
                     Skills you'll gain
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {formData.courseDetail.tags.map((item, index) => (
+                    {formData.course.courseDetail.tags.map((item, index) => (
                       <Chip
                         label={item}
                         variant="filled"
@@ -485,9 +506,9 @@ export default function CourseDescription() {
               )}
             </div>
             <div className="flex flex-col gap-4 w-1/3 md:w-11/12">
-              {formData.introVideo && (
+              {formData.course.introVideo && (
                 <video style={videoStyle} controls>
-                  <source src={formData.introVideo} type="video/mp4" />
+                  <source src={formData.course.introVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               )}
@@ -498,9 +519,9 @@ export default function CourseDescription() {
               className="flex flex-col w-2/3  md:w-full"
               style={{ border: "1px solid #262626", borderRadius: "15px" }}
             >
-              {formData.chapters && (
+              {formData.course.chapters && (
                 <>
-                  {formData.chapters.map((chapter, index) => (
+                  {formData.course.chapters.map((chapter, index) => (
                     <Accordion
                       expanded={expandedPanel === `panel${index}-`}
                       onChange={handleChange(`panel${index}-`)}

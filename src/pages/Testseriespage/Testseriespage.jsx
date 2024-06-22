@@ -113,7 +113,6 @@ function Testseriespage() {
         return;
       }
       setLoading(true);
-      console.log("handleoptions is causing error");
       submittest();
     } else {
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
@@ -170,6 +169,7 @@ function Testseriespage() {
             onComplete={handleCountdownComplete}
             renderer={({ minutes, seconds, completed }) => {
               if (completed) {
+                console.log("completed")
                 handleCountdownComplete();
               } else {
                 return (

@@ -104,7 +104,6 @@ export default function CoursePage() {
             },
           }
         );
-        console.log(response.data);
         setAlert(
           <Alert
             style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
@@ -158,7 +157,6 @@ export default function CoursePage() {
           setLoading(false);
         }
       } catch (error) {
-        console.log(error);
         setAlert(
           <Alert
             style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
@@ -181,7 +179,6 @@ export default function CoursePage() {
       try {
         if (user.token.length > 1) {
           setLoading(true);
-          console.log(user.token);
           const response = await axios.get(
             `${REACT_APP_BACK_URL}/user/courses/${courseId}/${email}/${chapterId}/${contentId}`,
             {
@@ -209,8 +206,6 @@ export default function CoursePage() {
         }
       } catch (error) {
         setLoading(false);
-
-        console.log(error);
         setAlert(
           <Alert
             style={{ position: "fixed", bottom: "3%", left: "2%", zIndex: 999 }}
