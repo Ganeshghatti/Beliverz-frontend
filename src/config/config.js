@@ -1,3 +1,3 @@
-export const REACT_APP_BACK_URL = "http://localhost:5000"
+export const REACT_APP_BACK_URL = "https://beliverz-server.vercel.app"
 // "https://beliverz-server.vercel.app"
 // "https://api.beliverzjrf.com";
